@@ -1,0 +1,43 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je ekta movie theatre e movie dekhar bebostha kora
+    hoise , i tomo din e je movie dekhabe oitar entertainment value hobe a[i] .
+
+    Amra atmost m ta movie dekhte parbo . Tobe ekhane movie dekhar khetre ekta shorto
+    dewa ache . Eita holo amra jodi kuno din movie dekhte na jai eita count kore rakha
+    hobe and poroborti jeidin movie dekhte jabo oi value tar sathe d multiply kore amader
+    entertainment (cnt*d) komiye dibe . Ekhon amader khuje ber korte hobe je highest 
+    koto entertainment achieve kora possible .
+
+    Dhori amra 2 , 5 , 7 , 12 tomo din movie dekhte jabo . 
+
+    Ans = a[2] - (2-0)*d + a[5] - (5-2) * d + a[7] - (7-5)*d + a[12] - (12-7) * d .
+        = a[2]+a[5]+a[7]+a[12] - (2-0+5-2+7-5+12-7) * d ;
+        = a[2]+a[5]+a[7]+a[12] - 12*d . 
+
+    Tar mane dekha jacche je shudhu last jeidin amra movie dekhte jacchi tar sathe 
+    disappointment ta multiply hoye summation theke kome jacche .
+
+*/
+
+void giveMeMyGloryBack() {
+    ll n , m , d ; cin >> n >> m >> d ; 
+
+    vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    
+    ll ans = 0 ; ll curSum = 0 ;
+    
+    priority_queue<ll,vector<ll> , greater<ll>> pq ;
+
+    for(int i = 0 ; i < n ; i++){
+        if(vec[i]>0){
+            curSum += vec[i] ; pq.push(vec[i]) ;
+        }
+        if(len(pq)>m){// Jodi pq te m er beshi movie dekha hoye jay tahole chuto ta removed .
+            curSum -= pq.top() ; pq.pop() ;
+        }
+        ans = max(ans,curSum-(i+1)*d) ;
+    }
+
+    cout << ans << endl ;
+
+}
