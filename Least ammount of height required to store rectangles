@@ -22,3 +22,23 @@ void giveMeMyGloryBack() {
     }
     cout << height << endl ;
 }
+
+___________________________________________NEW SOLUTION________________________________________________________________
+
+void giveMeMyGloryBack() {
+    ll n , boxWidth ; cin >> n >> boxWidth ; multiset<ll> ms ;
+    tamjid(n) { ll a ; cin >> a ; ms.insert(a) ; }
+    ll height = 1 ; ll voidLen = boxWidth ;
+    while(!ms.empty()){
+        auto itr = ms.upper_bound(voidLen) ;
+        if(itr!=ms.begin()){
+            itr-- ; 
+            ll curWidth = *itr ;
+            voidLen -= curWidth ;
+            ms.erase(itr) ;
+        }else{
+            height++ ; voidLen = boxWidth ; 
+        }
+    }
+    cout << height << endl ;
+}
