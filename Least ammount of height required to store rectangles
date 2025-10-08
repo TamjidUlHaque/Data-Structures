@@ -1,0 +1,24 @@
+/*Intuition :-
+  Ekhane proshner moddhe bola hoise amake power of 2 , emon width er rectangle dewa hobe jader height holo 1 . 
+  Ekhon shobgula rectangle ke ekta box er moddhe rakhte hobe . Ekhon amake jei box dewa hoise oi box er width
+  hocche K . Ekhon box er height shorbonimno koto hole amra oi box er moddhe shobgula rectangle ke rakhte parbo??
+*/
+
+void giveMeMyGloryBack() {
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    map<ll,ll> mp ; tamjid(n) mp[vec[i]]++ ;
+    ll mask = 0 ; ll height = 0 ;
+    for(ll i = 0 ; i <= 50 ; i++) if(k &(1LL<<i)) mask = i ;
+    while(!mp.empty()){
+        ll curSum = 0 ;
+        for(ll i = mask ; i >= 0 ; i--){
+            ll number = (1LL<<i) ;
+            while(mp[number] and curSum+number<=k){
+                curSum += number ; mp[number]-- ;
+            }
+            if(!mp[number]) mp.erase(number) ;
+        }
+        height++ ;
+    }
+    cout << height << endl ;
+}
