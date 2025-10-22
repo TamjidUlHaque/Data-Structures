@@ -1,0 +1,39 @@
+/*Intuition :-
+    Proshner moddhe bola hoise je amader ke q songkhok query dewa hobe jar moddhe
+    3 ta kore input thakbe . First input hishabe thakbe plus ba minus sign . Baki
+    duita input holo left and right value of the segment . Amader ke + char er jonno
+    segment ta ke multiset e input nite hobe . - er jonno multiset theke remove korte
+    hobe . Ar proti ta query teh bolte hobe atleast emon duita segment ache ki na jara
+    coincide kortese nah . 
+
+    Approach :- Problem solve korar jonno duita multiset newa hoise jar first ta left
+    boundary er track rakhtese ar second ta right boundary er track rakhtese . Ekhaner 
+    observation holo jodi rightBoundary er first element holo shobar prothom sesh houwa
+    segment . Ar leftBoundary er first element ta holo shobar prothom e shuru houwa segment.
+
+    Amra ekhane check korbo leftBoundary er highest value ki rightBoundary er first value ke
+    cross kortese ki na . Jodi leftBoundary er last value > rightBoundary er first value hoy
+    tahole amra bujhte parbo je ashole leftBoundary ta kuno segment er sathe coincide kortese
+    na . Jodi leftBoundary last element ta o rightBoundary er first element er sathe coincide
+    kore tahole baki value gula automatic oi range er moddhe e porbe .
+*/
+
+void giveMeMyGloryBack() { 
+    ll query ; cin >> query ; multiset<ll> leftBoundary , rightBoundary ;
+    while(query-->0){
+        char ch ; ll low , high ; cin >> ch >> low >> high ;
+        if(ch=='+'){
+            leftBoundary.insert(low) ; rightBoundary.insert(high) ;
+        }else{
+            leftBoundary.erase(leftBoundary.lower_bound(low)) ;
+            rightBoundary.erase(rightBoundary.lower_bound(high)) ;
+        }
+        if(leftBoundary.empty() or rightBoundary.empty()){
+            no ; continue ;
+        }
+        ll x = *(--leftBoundary.end()) ; ll y = *(rightBoundary.begin()) ;
+        if(x>y) yes ;
+        else no ;
+    }
+    
+}
